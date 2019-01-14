@@ -1,8 +1,23 @@
+class IndecisionApp extends React.Component {
+  render() {
+    return (
+      <div>
+        <Header title="test value" />
+        <Action />
+        <Options />
+        <Option />
+        <AddOption />
+      </div>
+    )
+  }
+}
+
 class Header extends React.Component {
   constructor(props) {
     super(props)
   }
   render() {
+    console.log(this.props)
     return (
       <div>
         <h1>Indecision</h1>
@@ -39,21 +54,21 @@ class AddOption extends React.Component {
   render() {
     return (
       <div>
-        <ol>
-          <li>Option 3</li>
-        </ol>
+        <h2>Some stuff.</h2>
+        <Option />
       </div>
     )
   }
 }
 
-const jsx = (
-  <div>
-    <Header />
-    <Action />
-    <Options />
-    <AddOption />
-  </div>
-)
+class Option extends React.Component {
+  render() {
+    return (
+      <div>
+        <h2>This should render between Options and AddOption</h2>
+      </div>
+    )
+  }
+}
 
-ReactDOM.render(jsx, document.getElementById('app'))
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'))
