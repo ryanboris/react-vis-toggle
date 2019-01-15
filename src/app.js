@@ -1,37 +1,36 @@
 class IndecisionApp extends React.Component {
   render() {
+    const title = 'Indecision App'
+    const subtitle = 'Put your life in the hands of a computer'
+    const options = ['thing one', 'thing two', 'thing four']
     return (
       <div>
-        <Header title="test value" />
-        <Action />
-        <Options />
-        <Option />
+        <Header title={title} subtitle={subtitle} />
+        <Action options={options} />
+        <Options options={options} />
         <AddOption />
       </div>
     )
   }
 }
-
-class Header extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-  render() {
-    console.log(this.props)
-    return (
-      <div>
-        <h1>Indecision</h1>
-        <h2>Put your life in the hands of a computer.</h2>
-      </div>
-    )
-  }
+const Header = props => {
+  const { title, subtitle } = props
+  return (
+    <div>
+      <h1>{title}</h1>
+      <h2>{subtitle}</h2>
+    </div>
+  )
 }
 
 class Action extends React.Component {
+  removeAll() {
+    alert('my boo')
+  }
   render() {
     return (
       <div>
-        <button>What should I do?</button>
+        <button onClick={this.removeAll}>Remove All</button>
       </div>
     )
   }
@@ -39,36 +38,38 @@ class Action extends React.Component {
 
 class Options extends React.Component {
   render() {
+    const { options } = this.props
     return (
       <div>
-        <ol>
-          <li>Option 1</li>
-          <li>Option 2</li>
-        </ol>
+        {options.map(option => (
+          <Option key={option} optionText={option} />
+        ))}
       </div>
     )
   }
 }
 
 class AddOption extends React.Component {
+  handleAddOption(e) {
+    e.preventDefault()
+    const value = e.target.elements.option.value.trim()
+    if (value) {
+      return alert(value)
+    }
+  }
   render() {
     return (
-      <div>
-        <h2>Some stuff.</h2>
-        <Option />
-      </div>
+      <form onSubmit={this.handleAddOption}>
+        <input type="text" name="option" />
+        <button>Add Option</button>
+      </form>
     )
   }
 }
 
-class Option extends React.Component {
-  render() {
-    return (
-      <div>
-        <h2>This should render between Options and AddOption</h2>
-      </div>
-    )
-  }
+const Option = props => {
+  const { optionText } = props
+  return <div>+{optionText}</div>
 }
 
 ReactDOM.render(<IndecisionApp />, document.getElementById('app'))
