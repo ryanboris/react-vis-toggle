@@ -24,23 +24,29 @@ const Header = props => {
 }
 
 class Action extends React.Component {
-  removeAll() {
-    alert('my boo')
-  }
   render() {
     return (
       <div>
-        <button onClick={this.removeAll}>Remove All</button>
+        <p />
       </div>
     )
   }
 }
 
 class Options extends React.Component {
+  constructor(props) {
+    super(props)
+    this.handleRemoveAll = this.handleRemoveAll.bind(this)
+  }
+  handleRemoveAll() {
+    console.log(this)
+  }
+
   render() {
     const { options } = this.props
     return (
       <div>
+        <button onClick={this.handleRemoveAll}>Remove All</button>
         {options.map(option => (
           <Option key={option} optionText={option} />
         ))}
