@@ -1,8 +1,8 @@
 import React from 'react'
 import Header from './Header'
-import Action from './Action'
-import AddOption from './AddOption'
-import Options from './Options'
+import Action from '../components/Action'
+import AddOption from '../components/AddOption'
+import Options from '../components/Options'
 
 export default class Home extends React.Component {
   constructor(props) {

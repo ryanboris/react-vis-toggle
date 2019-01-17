@@ -1,12 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Home from './components/Home'
+import Home from './containers/Home'
+import "./index.css"
 
 const App = () => {
   return (
-    <div>
       <Home />
-    </div>
   )
 }
 
