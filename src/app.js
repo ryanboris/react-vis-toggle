@@ -1,8 +1,14 @@
 class IndecisionApp extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      options: ['A', 'B', 'C'],
+    }
+  }
   render() {
     const title = 'Indecision App'
     const subtitle = 'Put your life in the hands of a computer'
-    const options = [ 'thing one', 'thing two', 'thing four' ]
+    const options = ['thing one', 'thing two', 'thing four']
     return (
       <div>
         <Header title={title} subtitle={subtitle} />
@@ -48,7 +54,9 @@ class Options extends React.Component {
     return (
       <div>
         <button onClick={this.handleRemoveAll}>Remove All</button>
-        {options.map(option => <Option key={option} optionText={option} />)}
+        {options.map(option => (
+          <Option key={option} optionText={option} />
+        ))}
       </div>
     )
   }
@@ -65,7 +73,7 @@ class AddOption extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleAddOption}>
-        <input type='text' name='option' />
+        <input type="text" name="option" />
         <button>Add Option</button>
       </form>
     )
